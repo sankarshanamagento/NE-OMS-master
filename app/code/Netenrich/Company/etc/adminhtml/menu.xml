@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Netenrich_Company::company" title="Company" module="Netenrich_Company" sortOrder="30" resource="Netenrich_Company::company"/>
+        <add id="Netenrich_Company::company_manage" title="Manage Companies" module="Netenrich_Company" sortOrder="10" parent="Netenrich_Company::company" action="company/index/" resource="Netenrich_Company::manage"/>
+		<update id="Magento_Sales::sales_shipment" title="Accepted Orders" translate="title" module="Magento_Sales" sortOrder="30" parent="Magento_Sales::sales_operation" action="sales/shipment" resource="Magento_Sales::shipment"/>
+    </menu>
+</config>

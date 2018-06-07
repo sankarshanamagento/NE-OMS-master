@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="jquery/fileUploader/css/jquery.fileupload-ui.css"/>
+		<css src="Netenrich_Company::css/popup.css"/>
+
+
+        <title>My Slideshow</title>
+        <link src="Netenrich_Company::js/company.js"/>
+
+
+
+    </head>
+    <update handle="editor"/>
+    <body>
+        <referenceContainer name="content">
+            <block class="Netenrich\Company\Block\Adminhtml\Company\Edit" name="company_edit"/>
+        </referenceContainer>
+        <referenceContainer name="left">
+            <block  class="Netenrich\Company\Block\Adminhtml\Company\Edit\Tabs" name="company_edit_tabs">
+                <block class="Netenrich\Company\Block\Adminhtml\Company\Edit\Tab\Main" name="company_edit_tab_main"/>
+				<block class="Netenrich\Company\Block\Adminhtml\Company\Edit\Tab\Additinal" name="company_edit_tab_additinal"/>
+				<block class="Netenrich\Company\Block\Adminhtml\Company\Edit\Tab\Account" name="company_edit_tab_account"/>
+				<block class="Netenrich\Company\Block\Adminhtml\Company\Edit\Tab\Legal" name="company_edit_tab_legal"/>
+				<block class="Netenrich\Company\Block\Adminhtml\Company\Edit\Tab\Assignproducts" name="company_edit_tab_assignproducts"/>
+
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">main_section</argument>
+                    <argument name="block" xsi:type="string">company_edit_tab_main</argument>
+                </action>
+
+			    <action method="addTab">
+                    <argument name="name" xsi:type="string">additinal_section</argument>
+                    <argument name="block" xsi:type="string">company_edit_tab_additinal</argument>
+                </action>
+
+
+				<action method="addTab">
+                    <argument name="name" xsi:type="string">account_section</argument>
+                    <argument name="block" xsi:type="string">company_edit_tab_account</argument>
+                </action>
+
+				<action method="addTab">
+                    <argument name="name" xsi:type="string">legal_section</argument>
+                    <argument name="block" xsi:type="string">company_edit_tab_legal</argument>
+                </action>
+				
+				<action method="addTab">
+                    <argument name="name" xsi:type="string">assign_section</argument>
+                    <argument name="block" xsi:type="string">company_edit_tab_assignproducts</argument>
+                </action>
+				
+				
+
+            </block>
+        </referenceContainer>
+    </body>
+</page>

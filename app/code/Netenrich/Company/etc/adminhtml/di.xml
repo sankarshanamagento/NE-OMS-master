@@ -1,0 +1,12 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+ <preference for="Magento\Sales\Block\Adminhtml\Order\View\Tab\Shipments" type="Netenrich\Company\Block\Adminhtml\Sales\Shipments" />
+ <preference for="Magento\Sales\Block\Adminhtml\Order\View" type="Netenrich\Company\Block\Adminhtml\Order\View" />
+ <preference for="Magento\Shipping\Controller\Adminhtml\Order\Shipment\Save" type="Netenrich\Company\Controller\Adminhtml\Order\Save" />
+ <preference for="Magento\Sales\Model\Order\Pdf\Invoice" type="Netenrich\Company\Model\Order\Pdf\Invoicepdf" />
+  <preference for="Magento\Sales\Model\AdminOrder\Create" type="Netenrich\Company\Model\Sales\AdminOrder\Create" />
+    <preference for="Magento\Quote\Model\QuoteValidator" type="Netenrich\Company\Model\Quote\QuoteValidator" />
+	<preference for="Magento\CatalogInventory\Model\Quote\Item\QuantityValidator" type="Netenrich\Company\Model\Quote\QuantityValidator" /> 
+	<preference for="Magento\CatalogInventory\Model\StockStateProvider" type="Netenrich\Company\Model\Quote\StockStateProvider" />
+	<preference for="Magento\Sales\Model\Order" type="Netenrich\Company\Model\Order\Freeshipping" />
+
+</config>

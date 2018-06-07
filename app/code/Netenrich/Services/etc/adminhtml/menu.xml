@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        
+        <add id="Netenrich_Services::services_manage" title="Manage Services" module="Netenrich_Services" sortOrder="0"  dependsOnModule="Magento_Catalog" action="services/index/"  resource="Netenrich_Services::services" parent="Magento_Catalog::catalog"/>
+		
+    </menu>
+</config>

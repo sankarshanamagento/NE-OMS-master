@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        
+        <add id="Netenrich_Webhook::webhook_manage" title="WebHook Apis" module="Netenrich_Webhook" sortOrder="0"  dependsOnModule="Magento_Catalog" action="webhook/index/"  resource="Netenrich_Webhook::webhook" parent="Magento_Catalog::catalog"/>
+		
+    </menu>
+</config>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <preference for="Netenrich\Apievents\Api\CompanyAddInterface" type="Netenrich\Apievents\Model\CompanyAdd" />
+    <preference for="Netenrich\Apievents\Api\CompanyModifyInterface" type="Netenrich\Apievents\Model\CompanyModify" />
+    <preference for="Netenrich\Apievents\Api\CompanyStatusInterface" type="Netenrich\Apievents\Model\CompanyStatus" />
+    <preference for="Netenrich\Apievents\Api\CustomerAddInterface" type="Netenrich\Apievents\Model\CustomerAdd" />
+    <preference for="Netenrich\Apievents\Api\CustomerModifyInterface" type="Netenrich\Apievents\Model\CustomerModify" />
+    <preference for="Netenrich\Apievents\Api\CustomerStatusInterface" type="Netenrich\Apievents\Model\CustomerStatus" />
+	<preference for="Netenrich\Apievents\Api\PartnerOrdersInterface" type="Netenrich\Apievents\Model\PartnerOrders" />
+    <preference for="Netenrich\Apievents\Api\ClientOrdersInterface" type="Netenrich\Apievents\Model\ClientOrders" />
+	<preference for="Netenrich\Apievents\Api\OpenOrdersInterface" type="Netenrich\Apievents\Model\OpenOrders" />
+	<preference for="Netenrich\Apievents\Api\Data\TestdataInterface" type="Netenrich\Apievents\Model\Testmodel" />
+    <preference for="Netenrich\Apievents\Api\Data\StatusDataInterface" type="Netenrich\Apievents\Model\StatusDataModel" />
+	
+	<preference for="Netenrich\Apievents\Api\WebstoreslistInterface" type="Netenrich\Apievents\Model\Webstoreslist" />
+	<preference for="Netenrich\Apievents\Api\Data\TestwebdataInterface" type="Netenrich\Apievents\Model\Testwebmodel" />
+	<preference for="Magento\Customer\Model\Address\AbstractAddress" type="Netenrich\Apievents\Model\Address\AbstractAddress" />
+    <preference for="Netenrich\Apievents\Api\CompanyDeleteInterface" type="Netenrich\Apievents\Model\CompanyDelete" />
+	<preference for="Magento\Backend\Model\Widget\Grid\Row\UrlGeneratorId" type="Netenrich\Apievents\Model\Widget\Grid\Row\UrlGeneratorId" />
+	<preference for="Magento\Backend\Model\Widget\Grid\Row\UrlGeneratorId" type="Netenrich\Apievents\Model\Widget\Grid\Row\UrlGeneratorId" />
+
+
+</config>

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Netenrich_Webhook::Webhook" title="Webhook" sortOrder="40">
+                    <resource id="Netenrich_Webhook::manage" title="All Webhook" sortOrder="10" >
+                        <resource id="Netenrich_Webhook::save" title="Save Webhook" sortOrder="10" />
+                        <resource id="Netenrich_Webhook::services_delete" title="Delete Webhook" sortOrder="20" />
+                    </resource>
+                </resource>
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="Netenrich_Webhook::config_services" title="Webhook Section" sortOrder="50" />
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

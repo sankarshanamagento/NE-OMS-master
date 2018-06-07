@@ -1,0 +1,30 @@
+<?php
+/**
+ * Company template for separate item
+ *
+ */
+
+/**
+ * @var $this Netenrich\Company\Block\View
+ * @see Netenrich\Company\Block\View
+ */
+?>
+<?php $_CompanyItem = $this->getCompany(); ?>
+    <div class="Company_item_subtitle">
+        <?php echo $this->formatDate($_CompanyItem->getPublishedAt()) ?> |
+        <?php echo $this->escapeHtml($_CompanyItem->getName()) ?>
+    </div>
+
+<div class="Company_item_view">
+    <?php if ($imageUrl = $this->getImageUrl($_CompanyItem, 400)): ?>
+       <p><img src="<?php echo $imageUrl ?>" alt="<?php echo $this->escapeHtml($_CompanyItem->getTitle()) ?>" /></p>
+    <?php endif; ?>
+
+    <div class="Company_item_content"><?php echo $_CompanyItem->getContent() ?></div>
+
+    <div class="pager">
+        <a href="<?php echo $this->getBackUrl() ?>">
+            <?php echo __('Return to list') ?>
+        </a>
+    </div>
+</div>

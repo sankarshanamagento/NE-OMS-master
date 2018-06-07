@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Netn. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Backend/etc/menu.xsd">
+    <menu>
+       
+        <add id="Netn_Distibutorproducts::netn_distibutorproducts_index" title="Distibutor Products" module="Netn_Distibutorproducts"  sortOrder="20" dependsOnModule="Netenrich_Company" action="distibutorproducts/distibutorproducts/index" resource="Netn_Distibutorproducts::netn_distibutorproducts_index"
+	parent="Netenrich_Company::company"	/>
+<!--AddMenu-->
+    </menu>
+</config>

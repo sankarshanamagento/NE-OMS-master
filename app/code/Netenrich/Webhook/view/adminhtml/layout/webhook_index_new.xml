@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<head>
+   <css src="Netenrich_Services::css/services.css"/>
+   <link src="Netenrich_Services::js/services.js"/>
+</head> 
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="webhook_index_edit"/>
+    <body/>
+</page>

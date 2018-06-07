@@ -1,0 +1,25 @@
+<?php 
+$productCollection = $block->getcompanyCollection();
+//print_r($productCollection);
+ $productids= array();
+foreach($productCollection as $product)
+{
+	$productids[]=$product->getDistibutor_id();
+}
+ $productvalues=implode(",",$productids);
+ ?>
+<input type="text" id="distibutorlist" value=<?php echo $productvalues;?>>
+
+
+<script type="text/javascript">
+require(['jquery'],function($){
+     
+    $(document).ready(function() {
+	
+       alert("how ru");
+      });
+
+});
+
+
+</script>

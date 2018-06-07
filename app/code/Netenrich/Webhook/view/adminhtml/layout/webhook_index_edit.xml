@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+	<css src="Netenrich_Webhook::css/services.css"/>
+    <link src="Netenrich_Webhook::js/services.js"/>
+</head>
+    <update handle="editor"/>
+    <body>
+        <referenceContainer name="content">
+            <block class="Netenrich\Webhook\Block\Adminhtml\Webhook\Edit" name="webhook_edit"/>
+        </referenceContainer>
+        <referenceContainer name="left">
+            <block  class="Netenrich\Webhook\Block\Adminhtml\Webhook\Edit\Tabs" name="webhook_edit_tabs">
+                <block class="Netenrich\Webhook\Block\Adminhtml\Webhook\Edit\Tab\Main" name="webhook_edit_tab_main"/>
+				<block class="Netenrich\Webhook\Block\Adminhtml\Webhook\Edit\Tab\Import" name="webhook_edit_tab_import"/>
+                
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">main_section</argument>
+                    <argument name="block" xsi:type="string">webhook_edit_tab_main</argument>
+                </action>
+				
+				<action method="addTab">
+                    <argument name="name" xsi:type="string">import_section</argument>
+                    <argument name="block" xsi:type="string">webhook_edit_tab_import</argument>
+                </action>
+               
+            </block>
+        </referenceContainer>
+    </body>
+</page>

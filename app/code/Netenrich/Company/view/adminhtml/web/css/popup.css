@@ -1,0 +1,42 @@
+
+
+
+.modal-slide, .modal-popup {
+    bottom: 0;
+    left: 0;
+    min-width: 0;
+    position: fixed;
+    right: -165px ;
+    top:-55px;
+    visibility: hidden;
+}
+
+
+.modal-slide._show .modal-inner-wrap {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+}
+
+
+
+.modal-slide .modal-inner-wrap {
+    height: 100%;
+    overflow-y: auto;
+    position: static;
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+    transition-duration: 0.3s;
+    -webkit-transition-property: -webkit-transform, visibility;
+    transition-property: transform, visibility;
+    transition-timing-function: ease-in-out;
+    width: 80%;
+}
+
+.viewpop{cursor:pointer;}
+.tg-wrap {border:solid;border-width:1px;border-color:#5f564f;margin-top:5px;}
+.tg  {border-collapse:collapse;border-spacing:0;width:100%;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-right:dashed;border-width:1px;border-color:#d6d6d6;overflow:hidden;word-break:normal;width:25%;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-right:dashed;border-width:1px;border-color:#d6d6d6;overflow:hidden;word-break:normal;width:25%;background-color:#5f564f;color:#fff;}
+.tg .tg-yw4l{vertical-align:top}
+@media screen and (max-width: 767px) {.tg {width: auto !important;}.tg col {width: auto !important;}
+.tg-wrap {overflow-x: auto;-webkit-overflow-scrolling: touch;}}

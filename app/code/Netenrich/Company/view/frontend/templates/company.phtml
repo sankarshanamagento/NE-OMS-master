@@ -1,0 +1,28 @@
+<?php 
+
+$_Company = $this->getCollection(); ?>
+<?php if ($_Company->getSize()): ?>
+<div class="Company_list_view">
+    <?php foreach ($_Company as $CompanyItem): ?>
+        <div id="item_<?php echo $CompanyItem->getId() ?>" class="Company_list_item">
+            <h2>
+                <a href="<?php echo $this->getItemUrl($CompanyItem) ?>">
+                    <?php echo $this->escapeHtml($CompanyItem->getName()) ?>
+                </a>
+            </h2>
+
+            <div class="Company_item_subtitle">
+                <?php echo $this->formatDate($CompanyItem->getPublishedAt()) ?> |
+                <?php echo $this->escapeHtml($CompanyItem->getName()) ?>
+            </div>
+
+            <?php if ($imageUrl = $this->getImageUrl($CompanyItem, 100)): ?>
+               <p><img src="<?php echo $imageUrl ?>" alt="<?php echo $this->escapeHtml($CompanyItem->getName()); ?>" /></p>
+            <?php endif; ?>
+        </div>
+    <?php endforeach; ?>
+</div>
+<?php echo $this->getPager() ?>
+<?php else: ?>
+    <div class="message info empty"><span><?php echo __('You have no Company.'); ?></span></div>
+<?php endif ?>

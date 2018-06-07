@@ -1,0 +1,5 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+  <event name="sales_order_load_after">
+    <observer name="sales_order_load_distributor_name" instance="Netenrich\Apievents\Observer\Sales\OrderLoadAfter" />  
+</event>
+</config>

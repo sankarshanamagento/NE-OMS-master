@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="app/code/Netenrich/Company/etc/webapi.xsd">
+ <!-- Example: curl http://127.0.0.1/index.php/rest/V1/calculator/add/1/2 -->
+    
+	
+	<route url="/V1/storesinfo/:divauserids" method="GET">
+        <service class="Netenrich\Services\Api\OpenOrdersInterface" method="openlistofids"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+		<data>
+            <parameter name="searchkey"   force="true">%num%</parameter>
+		</data>
+	</route>
+	
+	
+	<route url="/V1/catinfo/:catid" method="GET">
+        <service class="Netenrich\Services\Api\CategoryInterface" method="categoryinfo"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+		
+	</route>
+	
+	
+	
+
+</routes>

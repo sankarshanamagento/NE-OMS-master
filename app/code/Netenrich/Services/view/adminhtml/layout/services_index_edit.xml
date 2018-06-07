@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+	<css src="Netenrich_Services::css/services.css"/>
+    <link src="Netenrich_Services::js/services.js"/>
+</head>
+    <update handle="editor"/>
+    <body>
+        <referenceContainer name="content">
+            <block class="Netenrich\Services\Block\Adminhtml\Services\Edit" name="services_edit"/>
+        </referenceContainer>
+        <referenceContainer name="left">
+            <block  class="Netenrich\Services\Block\Adminhtml\Services\Edit\Tabs" name="services_edit_tabs">
+                <block class="Netenrich\Services\Block\Adminhtml\Services\Edit\Tab\Main" name="services_edit_tab_main"/>
+				<block class="Netenrich\Services\Block\Adminhtml\Services\Edit\Tab\Import" name="services_edit_tab_import"/>
+                
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">main_section</argument>
+                    <argument name="block" xsi:type="string">services_edit_tab_main</argument>
+                </action>
+				
+				<!-- <action method="addTab">
+                    <argument name="name" xsi:type="string">import_section</argument>
+                    <argument name="block" xsi:type="string">services_edit_tab_import</argument>
+                </action> -->
+               
+            </block>
+        </referenceContainer>
+    </body>
+</page>

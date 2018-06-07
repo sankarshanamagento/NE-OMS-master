@@ -1,0 +1,174 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * @var \Magento\Sales\Block\Adminhtml\Order\Create\Billing\Address|\Magento\Sales\Block\Adminhtml\Order\Create\Shipping\Address $block
+ */
+if ($block->getIsShipping()):
+    $_fieldsContainerId = 'order-shipping_address_fields';
+    $_addressChoiceContainerId = 'order-shipping_address_choice';
+    ?>
+    <script type="text/javascript">
+
+	
+    require(["Magento_Sales/order/create/form"], function(){
+        console.log(order.shippingAddressContainer);
+        order.shippingAddressContainer = '<?php /* @escapeNotVerified */ echo $_fieldsContainerId ?>';
+        order.setAddresses(<?php /* @escapeNotVerified */ echo $block->getAddressCollectionJson() ?>);
+	
+
+    });
+    </script>
+    <?php
+else:
+    $_fieldsContainerId = 'order-billing_address_fields';
+    $_addressChoiceContainerId = 'order-billing_address_choice';
+    ?>
+   <script type="text/javascript">
+
+        require(["Magento_Sales/order/create/form"], function(){
+            order.billingAddressContainer = '<?php /* @escapeNotVerified */ echo $_fieldsContainerId ?>';
+        });
+    </script>
+    <?php
+endif; ?>
+
+<fieldset class="admin__fieldset">
+    <legend class="admin__legend <?php /* @escapeNotVerified */ echo $block->getHeaderCssClass() ?>">
+        <span><?php /* @escapeNotVerified */ echo $block->getHeaderText() ?></span>
+    </legend><br>
+
+    <fieldset id="<?php /* @escapeNotVerified */ echo $_addressChoiceContainerId ?>" class="admin__fieldset order-choose-address">
+   
+        <div class="admin__field">
+            <label class="admin__field-label"><?php /* @escapeNotVerified */ echo __('Select from existing customer addresses:') ?></label>
+            <?php $_id = $block->getForm()->getHtmlIdPrefix() . 'customer_address_id' ?>
+            <div class="admin__field-control">
+			 <?php if($_id!="order-shipping_address_customer_address_id") {?>
+                <select id="<?php /* @escapeNotVerified */ echo $_id ?>"
+                        name="<?php echo $block->getForm()->getHtmlNamePrefix() ?>[customer_address_id]"
+                        style="width: 97.5%;" onchange="order.selectAddress(this, '<?php /* @escapeNotVerified */ echo $_fieldsContainerId ?>')"
+                        class="admin__control-select">
+                    <option value=""><?php /* @escapeNotVerified */ echo __('Add New Address') ?></option>
+                    <?php foreach ($block->getAddressCollection() as $_address): ?>
+                        <?php //if($block->getAddressAsString($_address)!=$block->getAddressAsString($block->getAddress())): ?>
+                        <option
+                            value="<?php /* @escapeNotVerified */ echo $_address->getId() ?>"<?php if ($_address->getId() == $block->getAddressId()): ?> selected="selected"<?php endif; ?>>
+                            <?php /* @escapeNotVerified */ echo $_address->getCompany().",".$block->getAddressAsString($_address) ?>
+                        </option>
+                        <?php //endif; ?>
+                    <?php endforeach; ?>
+                </select> 
+			 <?php } else {?> 
+			 <select id="<?php /* @escapeNotVerified */ echo $_id ?>"
+                        name="<?php echo $block->getForm()->getHtmlNamePrefix() ?>[customer_address_id]"
+                        style="width: 97.5%;" onchange="order.selectAddress(this, '<?php /* @escapeNotVerified */ echo $_fieldsContainerId ?>')"
+                        class="admin__control-select validate-select">
+					<option value=""><?php /* @escapeNotVerified */ echo __('Please Select') ?></option>
+                    
+                    <?php foreach ($block->getAddressCollectionshipping() as $_address): ?>
+                        <?php //if($block->getAddressAsString($_address)!=$block->getAddressAsString($block->getAddress())): ?>
+                        <option
+                            value="<?php /* @escapeNotVerified */ echo $_address->getId() ?>"<?php if ($_address->getId() == $block->getAddressId()): ?> selected="selected"<?php endif; ?>>
+                            <?php /* @escapeNotVerified */ echo $_address->getCompany().",".$block->getAddressAsString($_address) ?>
+                        </option>
+                        <?php //endif; ?>
+                    <?php endforeach; ?>
+                </select> 
+			 <?php }?>
+            </div>
+        </div>
+    </fieldset>
+
+   <span onclick = "toggleMsg('<?php /* @escapeNotVerified */ echo $_fieldsContainerId ?>');" class="toggleblock"> <div id="classhere-<?php echo $_fieldsContainerId ?>"  class="arrow-up"/></div></span>
+	
+    <div class="order-address admin__fieldset" id="<?php /* @escapeNotVerified */ echo $_fieldsContainerId ?>" style = "display:none; margin-top:25px;">
+
+        <?php echo $block->getForm()->toHtml() ?>
+
+        <!--<div class="admin__field admin__field-option order-save-in-address-book">
+            <input name="<?php echo $block->getForm()->getHtmlNamePrefix() ?>[save_in_address_book]" type="checkbox"
+                   id="<?php echo $block->getForm()->getHtmlIdPrefix() ?>save_in_address_book"
+                   value="1"
+                   <?php if (!$block->getDontSaveInAddressBook() && $block->getAddress()->getSaveInAddressBook()): ?> checked="checked"<?php endif; ?>
+                   class="admin__control-checkbox"/>
+            <label for="<?php echo $block->getForm()->getHtmlIdPrefix() ?>save_in_address_book"
+                   class="admin__field-label"><?php /* @escapeNotVerified */ echo __('Save in address book') ?></label>
+        </div>-->
+    </div>
+    <?php $hideElement = 'address-' . ($block->getIsShipping() ? 'shipping' : 'billing') . '-overlay'; ?>
+    <div style="display: none;" id="<?php /* @escapeNotVerified */ echo $hideElement ?>" class="order-methods-overlay">
+        <span><?php /* @escapeNotVerified */ echo __('You don\'t need to select a shipping address.') ?></span>
+    </div>
+
+    <script type="text/javascript">
+
+        require(["Magento_Sales/order/create/form"], function(){
+			
+			
+			
+                order.bindAddressFields('<?php /* @escapeNotVerified */ echo $_fieldsContainerId ?>');
+                order.bindAddressFields('<?php /* @escapeNotVerified */ echo $_addressChoiceContainerId ?>');
+                <?php if ($block->getIsShipping() && $block->getIsAsBilling()): ?>
+                order.disableShippingAddress(true);
+                <?php endif; ?>
+				
+				
+				
+				
+        });
+		function toggleMsg(container) {
+            $(container).toggle();
+			//$('classhere').toggleClassName('arrow-down');
+			if(!$('classhere-'+container).hasClassName('arrow-up')) {
+			//alert('arrow-up');	
+           $('classhere-'+container).removeClassName('arrow-down'); 
+            $('classhere-'+container).addClassName('arrow-up');			
+        } else {
+			//alert('arrow-down');
+			$('classhere-'+container).removeClassName('arrow-up'); 
+            $('classhere-'+container).addClassName('arrow-down');
+        }
+		}
+    </script>
+	
+</fieldset>
+<style>
+.arrow-down {
+   border-right: 5px solid; 
+    border-bottom: 5px solid;
+    width: 20px; height: 20px;
+    transform: rotate(-135deg);
+	float:right;
+	
+}
+
+.arrow-up {
+    border-right: 5px solid; 
+    border-bottom: 5px solid;
+    width: 20px; height: 20px;
+    transform: rotate(45deg);
+	float:right;
+	margin-top: -10px;
+	
+}
+
+.toggleblock{
+	    background-color: #ccc;
+    display: block;
+    padding: 10px;
+    width: 38px;
+    line-height: 30px;
+    height: 30px;
+    text-align: center;
+    float: right;
+	cursor:pointer;
+}
+
+
+</style>

@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="store_save_after">
+        <observer name="productsave" instance="Netenrich\Services\Model\Observer\ProductSave" />
+    </event>
+	
+	
+	<event name="website_save_after">
+        <observer name="editstore" instance="Netenrich\Services\Model\Observer\Editstore" />
+    </event>
+	
+	<event name="website_delete_before">
+        <observer name="deletebeforestore" instance="Netenrich\Services\Model\Observer\Deletestorebefore" />
+    </event>
+	
+	<!-- <event name="store_save_before">
+        <observer name="checkstore" instance="Netenrich\Services\Model\Observer\Checkstore" />
+    </event> -->
+	
+	<event name="store_group_save_after">
+        <observer name="checkstore" instance="Netenrich\Services\Model\Observer\Checkstore" />
+    </event>
+	
+	<event name="catalog_category_save_after">
+        <observer name="categoryattributes" instance="Netenrich\Services\Model\Observer\Categoryattributes"/>
+    </event>
+	
+	<event name="catalog_category_delete_before">
+        <observer name="categorydelete" instance="Netenrich\Services\Model\Observer\Categorydelete"/>
+    </event>
+	
+	
+	<event name="catalog_category_move_after">
+        <observer name="categorymove" instance="Netenrich\Services\Model\Observer\Categorymove"/>
+</event>
+	
+	
+	<event name="catalog_entity_attribute_save_before">
+	<observer name="attributebeforesave" instance="Netenrich\Services\Model\Observer\Attributebeforesave"/>
+	</event>
+	
+	<event name="catalog_entity_attribute_save_after">
+	<observer name="attributesave" instance="Netenrich\Services\Model\Observer\Attributesave"/>
+	</event>
+	
+	
+</config>

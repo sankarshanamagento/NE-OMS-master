@@ -1,0 +1,143 @@
+<div class="row">
+    <div class="add-video-button-container">
+        <button id="add_video_button"
+                title="<?php echo $block->escapeHtml(__('Add Document'));?>"
+                data-role="add-video-button"
+                type="button"
+                class="action-secondary"
+                data-ui-id="widget-button-1">
+            <span><?php echo $block->escapeHtml(__('Add Document')) ?></span>
+        </button>
+    </div>
+</div>
+<?php
+$orgId = $this->getRequest()->getParam('org_id');
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance(); // Instance of object manager
+$resource = $objectManager->get('Magento\Framework\App\ResourceConnection');
+$connection = $resource->getConnection();
+$tableName = $resource->getTableName('netenrich_organisation_doc'); //gives table name with prefix
+
+//Select Data from table
+$sql = "Select * FROM " . $tableName ." where org_id=".$orgId;
+$result = $connection->fetchAll($sql);
+//echo "<pre>";
+//print_r($result); // gives associated array, table fields as key in array.
+
+?>
+<div class="tg-wrap" id="doclist"><table class="tg">
+  <tr>
+    
+	  <th class="tg-yw4l">Title</th>
+      <th class="tg-yw4l">Created Date</th>
+      <th class="tg-yw4l">Created By</th>
+	  <th class="tg-yw4l">Action</th>
+  </tr>
+   <?php if(count($result)< 0){ foreach($result as $doclist) { ?>
+  <tr >
+        <td class="tg-yw4l" >
+	        <div class="data">
+			<input id="<?php echo $doclist['docid']; ?>description" type="hidden" name="description" value="<?php echo $doclist['description']; ?>">
+			<input id="<?php echo $doclist['docid']; ?>comments" type="hidden" name="comments" value="<?php echo $doclist['comments']; ?>">
+			<input id="<?php echo $doclist['docid']; ?>title" type="hidden" name="title" value="<?php echo $doclist['title']; ?>">
+			<input id="<?php echo $doclist['docid']; ?>filedata" type="hidden" name="filedata" value="<?php echo $doclist['filedata']; ?>">
+			</div>
+	        <div class="clickme viewpop" id="<?php echo $doclist['docid']; ?>" ><?php echo $doclist['title']; ?></div>
+		</td>
+      <td class="tg-yw4l"><?php echo $doclist['docdate']; ?></td>
+      <td class="tg-yw4l"><?php echo $doclist['createduser']; ?></td>
+	  <td class="tg-yw4l"><a href="<?php echo $doclist['filedata']; ?>" target="_blank">Preview</a></td>
+  </tr>
+   <?php } } else{ ?> <tr> <td class="tg-yw4l" colspan='4'><span style="padding-left:25%;"> No Documents are listed for this Company </span></td></tr>  <?php } ?>
+</table></div>
+
+		<!-- Model code begin here  -->
+<div id="myModel" class="right">
+
+    <div>
+	  <div id="new-video" style="" data-modal-info="">
+
+
+
+	<div class="page-main-actions">
+                <div class="page-actions">
+                    <div class="page-actions-buttons">
+
+                        <button class="action-primary video-create-button" id="savedocument" type="button" data-role="action"><span>Save</span>
+                        </button>
+
+                        <button class="video-cancel-button" type="button" data-role="action"><span>Cancel</span></button>
+                    </div>
+                </div>
+            </div>
+	<div></div>
+	<span class="field-row">
+                  <div id="new_video_messages" class="control-value admin__field-value"></div></span>
+
+
+
+            <fieldset class="fieldset admin__fieldset " id="new_video_form_fieldset">
+
+
+    <div class="messages">
+            </div>
+
+
+
+
+
+
+
+
+
+            <input id="item_id" name="" data-ui-id="affected-attribute-set-form-fieldset-element-hidden" value="" type="hidden">
+            <input id="file_name" name="" data-ui-id="affected-attribute-set-form-fieldset-element-hidden" value="<?php echo $this->getUrl("company/index/serviceprovider/");?>" type="hidden">
+			<input id="orgid" value="<?php echo $orgId = $this->getRequest()->getParam('org_id');?>"  value="" type="hidden">
+			<div id="base64" style="display:none;"></div>
+
+        <div class="admin__field field field-video_url  required _required with-note" >
+                    <label class="label admin__field-label" for="video_url"><span>Title</span></label>
+            <div class="admin__field-control control">
+                <input id="title" name="title"  value="" class="edited-data validate-url input-text admin__control-text required-entry _required" title="Title" type="text">
+                <label class='admin__field-error titleerrorlable' style="display:none;">This is a required field.</label>
+            </div>
+            </div>
+
+        <div class="admin__field field field-video_title  required _required">
+                    <label class="label admin__field-label" for="video_title"><span>Description</span></label>
+            <div class="admin__field-control control">
+                <textarea id="description" name="video_title"  class="edited-data textarea admin__control-textarea" title="Description" rows="2" cols="15"></textarea>
+                <label class='admin__field-error descerror' style="display:none;">This is a required field.</label>
+			</div>
+            </div>
+
+        <div class="admin__field field field-video_description ">
+                    <label class="label admin__field-label" for="video_description"><span>Comments</span></label>
+            <div class="admin__field-control control">
+                <textarea id="comments" name="voideo_description" class="edited-data textarea admin__control-textarea" title="Comments" rows="2" cols="15"></textarea>
+			</div>
+            </div>
+
+        <div class="admin__field field field-new_video_screenshot " data-ui-id="affected-attribute-set-form-fieldset-element-form-field-new-video-screenshot">
+                    <label class="label admin__field-label uploadlabel" for="new_video_screenshot" data-ui-id="affected-attribute-set-form-fieldset-element-file-image-label"><span>Upload File</span></label>
+            <div class="admin__field-control control">
+                <input id="new_video_screenshot" name="image" title="Preview Image"  type="file">
+                <label class='admin__field-error fileerror' style="display:none;">This is a required field.</label>
+             </div>
+            </div>
+
+
+
+
+
+
+
+
+
+            </fieldset>
+
+</div>
+
+	</div>
+
+
+</div>
